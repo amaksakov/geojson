@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://amaksakov.blogspot.com/schema/Feature.json",
+  "title": "GeoJSON Feature",
+  "type": "object",
+  "required": [
+    "type",
+    "properties",
+    "geometry"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ]
+    },
+    "properties": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+		{
+		  "type": "object"
+		}
+      ]
+    },
+    "geometry": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+	    {
+		  "$ref": "Point.json#"
+	    },
+	    {
+		  "$ref": "LineString.json#"
+	    },
+	    {
+		  "$ref": "Polygon.json#"
+	    },
+	    {
+		  "$ref": "MultiPoint.json#"
+	    },
+	    { 
+		  "$ref": "MultiLineString.json#"
+	    },
+	    {
+		  "$ref": "MultiPolygon.json#"
+	    },
+	    {
+		  "$ref": "GeometryCollection.json#"
+	    }
+      ]
+    },
+    "bbox": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}
